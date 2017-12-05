@@ -1,10 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MettleAI\Controller\Player\BareMettle.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MettleAI\Controller\Enemy\EnemyCoreController.cs">
     <Files>
-      <File FileName="Assets\MettleAI\Controller\Player\CoreMettleMover.cs" Line="121" Column="1" />
-      <File FileName="Assets\MettleAI\Controller\Player\BareMettle.cs" Line="26" Column="2" />
-      <File FileName="Assets\MettleAI\GeneralAI\MettleAware.cs" Line="40" Column="1" NotebookId="1" />
+      <File FileName="Assets\MettleAI\Controller\Player\PlayerCoreController.cs" Line="86" Column="3" />
+      <File FileName="Assets\MettleAI\Controller\Enemy\EnemyCoreController.cs" Line="81" Column="71" NotebookId="1" />
+      <File FileName="Assets\MettleAI\Controller\Player\CorePlayerMover.cs" Line="23" Column="21" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
