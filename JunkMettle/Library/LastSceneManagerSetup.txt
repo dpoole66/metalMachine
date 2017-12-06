@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Enemy.unity
+- path: Assets/Scenes/FSM_1A.unity
   isLoaded: 1
   isActive: 1

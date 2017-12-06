@@ -1,10 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MettleAI\Controller\Enemy\EnemyCoreController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MettleCore\MettleAI\Scripts\EnemyStateController.cs">
     <Files>
-      <File FileName="Assets\MettleAI\Controller\Player\PlayerCoreController.cs" Line="86" Column="3" />
-      <File FileName="Assets\MettleAI\Controller\Enemy\EnemyCoreController.cs" Line="81" Column="71" NotebookId="1" />
-      <File FileName="Assets\MettleAI\Controller\Player\CorePlayerMover.cs" Line="23" Column="21" NotebookId="1" />
+      <File FileName="Assets\MettleCore\MettleAI\Scripts\EnemyStateController.cs" Line="7" Column="2" />
+      <File FileName="Assets\MettleCore\MettleAI\Scripts\Transition.cs" Line="13" Column="1" NotebookId="1" />
+      <File FileName="Assets\MettleCore\MettleAI\Scripts\LookDecision.cs" Line="16" Column="3" NotebookId="1" />
+      <File FileName="Assets\MettleCore\MettleAI\Scripts\AdvanceAction.cs" Line="8" Column="1" NotebookId="1" />
+      <File FileName="Assets\MettleCore\MettleAI\Scripts\State.cs" Line="27" Column="53" NotebookId="1" />
+      <File FileName="Assets\MettleCore\MettleAI\Scripts\IdleAction.cs" Line="8" Column="1" NotebookId="1" />
+      <File FileName="Assets\MettleCore\MettleAI\Scripts\Decision.cs" Line="7" Column="51" NotebookId="1" />
+      <File FileName="Assets\MettleCore\MettleAI\Scripts\Action.cs" Line="10" Column="1" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
