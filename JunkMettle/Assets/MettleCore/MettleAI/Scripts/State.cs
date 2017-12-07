@@ -9,12 +9,12 @@ public class State : ScriptableObject {
 	public Transition[] transitions;
 	public Color sceneGizmoColor = Color.grey;
 
-	public void UpdateState(EnemyStateController controller){
+	public void UpdateState(StateController controller){
 		DoActions(controller);
 		CheckTransitions (controller);
 		}
 
-	private void DoActions(EnemyStateController controller){
+	private void DoActions(StateController controller){
 
 		for (int i =0; i < actions.Length; i++){
 
@@ -24,7 +24,7 @@ public class State : ScriptableObject {
 
 	}
 
-	private void CheckTransitions (EnemyStateController controller){
+	private void CheckTransitions (StateController controller){
 
 		for (int i = 0; i < transitions.Length; i++) {
 

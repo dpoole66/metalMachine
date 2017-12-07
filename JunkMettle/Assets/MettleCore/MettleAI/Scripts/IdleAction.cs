@@ -5,15 +5,17 @@ using UnityEngine;
 [CreateAssetMenu (menuName = "MettleAI/Actions/Idle")]
 public class IdleAction : Action {
 
-	public override void Act(EnemyStateController controller){
+	public override void Act(StateController controller){
+
+		Idle (controller);
 
 	}
 
-	private void Patrol(EnemyStateController controller){
+	private void Idle(StateController controller){
 
-		controller.Enemy_Agent.isStopped = true;
-
+			controller.ThisAgent.SetDestination (controller.ThisAgent.transform.position);
+			controller.ThisAgent.isStopped = true;
+			controller.ThisAnimator.SetBool ("Moveing", false);
+			controller.ThisAnimator.SetBool ("P_Idle", true);
 	}
-
-
 }

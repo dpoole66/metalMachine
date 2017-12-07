@@ -62,14 +62,15 @@
      <Compile Include="Assets\MettleCore\GeneralAI\LookAtTarget.cs" />
      <Compile Include="Assets\MettleCore\GeneralAI\MettleAware.cs" />
      <Compile Include="Assets\MettleCore\MettleAI\Scripts\Action.cs" />
-     <Compile Include="Assets\MettleCore\MettleAI\Scripts\AdvanceAction.cs" />
      <Compile Include="Assets\MettleCore\MettleAI\Scripts\Decision.cs" />
-     <Compile Include="Assets\MettleCore\MettleAI\Scripts\EnemyStateController.cs" />
-     <Compile Include="Assets\MettleCore\MettleAI\Scripts\EnemyStats.cs" />
      <Compile Include="Assets\MettleCore\MettleAI\Scripts\IdleAction.cs" />
      <Compile Include="Assets\MettleCore\MettleAI\Scripts\LookDecision.cs" />
-     <Compile Include="Assets\MettleCore\MettleAI\Scripts\PlayerStats.cs" />
+     <Compile Include="Assets\MettleCore\MettleAI\Scripts\ManeuverAction.cs" />
      <Compile Include="Assets\MettleCore\MettleAI\Scripts\State.cs" />
+     <Compile Include="Assets\MettleCore\MettleAI\Scripts\StateController.cs" />
+     <Compile Include="Assets\MettleCore\MettleAI\Scripts\Stats\EnemyStats.cs" />
+     <Compile Include="Assets\MettleCore\MettleAI\Scripts\Stats\PlayerStats.cs" />
+     <Compile Include="Assets\MettleCore\MettleAI\Scripts\Stats\Stats.cs" />
      <Compile Include="Assets\MettleCore\MettleAI\Scripts\Transition.cs" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>C:/Program Files/Unity 2017.2.0b9/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>

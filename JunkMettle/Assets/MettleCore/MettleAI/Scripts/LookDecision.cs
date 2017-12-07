@@ -5,23 +5,23 @@ using UnityEngine;
 [CreateAssetMenu (menuName = "MettleAI/Decisions/Look")]
 public class LookDecision : Decision {
 
-	public override bool Decide(EnemyStateController controller){
+	public override bool Decide(StateController controller){
 
 		bool targetVisible = Look (controller);
 		return targetVisible;
 
 	}
 
-	private bool Look(EnemyStateController controller){
+	private bool Look(StateController controller){
 
 		RaycastHit hit;
 
-		Debug.DrawRay (controller.EnemyCam.position, controller.EnemyCam.forward.normalized * controller.enemyStats.lookRange, Color.blue);
+		Debug.DrawRay (controller.ThisCam.position, controller.ThisCam.forward.normalized * controller.Stats.lookRange, Color.blue);
 
-		if (Physics.SphereCast (controller.EnemyCam.position, controller.enemyStats.lookSphereCastRadius, controller.EnemyCam.forward, out hit, 
-			controller.enemyStats.lookRange) && hit.collider.CompareTag ("Enemy")) {
+		if (Physics.SphereCast (controller.ThisCam.position, controller.Stats.lookSphereCastRadius, controller.ThisCam.forward, out hit, 
+			controller.Stats.lookRange) && hit.collider.CompareTag ("Enemy")) {
 
-			controller.playerTarget = hit.transform;
+			controller.GoTarget = hit.transform;
 			return true;
 
 		} else {

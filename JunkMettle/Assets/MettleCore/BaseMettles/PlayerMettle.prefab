@@ -219,10 +219,10 @@ GameObject:
   - component: {fileID: 54451092580350512}
   - component: {fileID: 195610260477514020}
   - component: {fileID: 136008047743428768}
-  - component: {fileID: 114742618732020400}
+  - component: {fileID: 114294865045636564}
   m_Layer: 2
   m_Name: PlayerMettle
-  m_TagString: Enemy
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1006,7 +1006,7 @@ GameObject:
   - component: {fileID: 124799865131401366}
   - component: {fileID: 81687282038054512}
   m_Layer: 2
-  m_Name: MettleCam
+  m_Name: PlayerCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1645,7 +1645,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1885700059439224}
   m_LocalRotation: {x: -0.000000037252896, y: -0, z: 0.000000002793967, w: 1}
-  m_LocalPosition: {x: 0, y: 0.103, z: 0.261}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0.188}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4569490906623222}
@@ -2071,7 +2071,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1197984535022858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4088541159264458}
@@ -2265,8 +2265,8 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1197984535022858}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: f27062813ef96564390f1d4e636dc7a6, type: 3}
-  m_Controller: {fileID: 9100000, guid: 5b67407ec0f1a9f4f836c4dc6b9d3d60, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 9e673bb7e8d6ca44eb51d5f5f59c1ef0, type: 3}
+  m_Controller: {fileID: 9100000, guid: 8fae38970a80a664db3b59796a5ec5e2, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2310,7 +2310,7 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114742618732020400
+--- !u!114 &114294865045636564
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2318,16 +2318,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1197984535022858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6edc90f1e84edd341bdfaac92456e2d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fc3413830fb32d45b0bfe1d94bb4596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 11400000, guid: b046c7ca54bf5d7448c1dd9e44f8133d, type: 2}
-  enemyStats: {fileID: 11400000, guid: c75142ae7004ce54d91f5fa52ffdceb9, type: 2}
-  EnemyCam: {fileID: 4355303878826888}
-  remainState: {fileID: 11400000, guid: 48bda0e7f72a41b439310c94a3a2bad6, type: 2}
-  Enemy_Agent: {fileID: 0}
-  nextWayPoint: 0
-  playerTarget: {fileID: 0}
+  currentState: {fileID: 11400000, guid: 75b759c5956487c4ebc4ecf766e25119, type: 2}
+  Stats: {fileID: 11400000, guid: 57f1cac7d111cc148a845e2e2102d425, type: 2}
+  ThisCam: {fileID: 4355303878826888}
+  remainState: {fileID: 0}
+  Enemy: {fileID: 0}
+  ThisAgent: {fileID: 0}
+  GoTarget: {fileID: 0}
 --- !u!124 &124799865131401366
 Behaviour:
   m_ObjectHideFlags: 1
@@ -2362,7 +2362,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 96540235906bbd04bb9843521a794249, type: 2}
+  - {fileID: 2100000, guid: 954a3f8b8afd9e641a5eed678bb43537, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2409,7 +2409,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 96540235906bbd04bb9843521a794249, type: 2}
+  - {fileID: 2100000, guid: 954a3f8b8afd9e641a5eed678bb43537, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2460,7 +2460,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 96540235906bbd04bb9843521a794249, type: 2}
+  - {fileID: 2100000, guid: 954a3f8b8afd9e641a5eed678bb43537, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2507,7 +2507,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 96540235906bbd04bb9843521a794249, type: 2}
+  - {fileID: 2100000, guid: 954a3f8b8afd9e641a5eed678bb43537, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
