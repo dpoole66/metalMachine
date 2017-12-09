@@ -21,7 +21,7 @@ public class LookDecision : Decision {
 		if (Physics.SphereCast (controller.ThisCam.position, controller.Stats.lookSphereCastRadius, controller.ThisCam.forward, out hit, 
 			controller.Stats.lookRange) && hit.collider.CompareTag ("Enemy")) {
 
-			controller.GoTarget = hit.transform;
+			//controller.GoTarget = hit.transform;
 			return true;
 
 		} else {

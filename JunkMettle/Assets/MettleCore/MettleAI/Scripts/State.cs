@@ -33,7 +33,7 @@ public class State : ScriptableObject {
 			if (decisionSucceeded) {
 
 				controller.TransitionToState (transitions [i].trueState);
-				Debug.Log ("See You");
+				Debug.Log ("State Change");
 
 			}	else{
 
