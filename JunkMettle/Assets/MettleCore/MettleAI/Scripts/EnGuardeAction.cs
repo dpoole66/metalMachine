@@ -12,17 +12,25 @@ public class EnGuardeAction : Action {
 	}
 
 	private void EnGuarde(StateController controller){
-		/*
-		var rotation = Quaternion.LookRotation ((controller.Enemy.transform.position - controller.ThisAgent.transform.position));
-		controller.ThisAnimator.SetFloat ("Rotation", controller.ThisAgent.transform.rotation.y);
+        //Debug.Log("EnGuarde");
+        // var rotation = Quaternion.LookRotation ((controller.Enemy.transform.position - controller.ThisAgent.transform.position));
 
-		controller.ThisAgent.transform.rotation = Quaternion.Slerp (controller.ThisAgent.transform.rotation, rotation, 
-				Time.deltaTime * controller.Stats.turnSpeed); 
-		*/
-		controller.ThisAgent.SetDestination (controller.GoTarget.position);
-		controller.ThisAnimator.SetBool ("P_EnGuarde", true);
-		controller.ThisAnimator.SetBool ("P_Maneuver", false);
+        //When stopped, rototate toward Enemy
+        //if(controller.ThisAgent.remainingDistance <= controller.ThisAgent.stoppingDistance && !controller.ThisAgent.pathPending ){
 
+        //Vector3 relativePos = controller.Enemy.transform.position - controller.ThisAgent.transform.position;
+        controller.ThisAgent.SetDestination(controller.GoTarget.position);
+           // controller.ThisAgent.transform.rotation = Quaternion.Slerp(controller.ThisAgent.transform.rotation, rotation,
+           // Time.deltaTime * controller.Stats.turnSpeed);
+
+      //  }       else{
+
+            //Keep moving
+            //controller.ThisAgent.SetDestination(controller.GoTarget.position);
+           // Debug.Log(controller.Enemy.transform.position);
+
+        
+       
 	}
 
 }

@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Name: Stats
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  turnSpeed: 4
+  turnSpeed: 15
   lookRange: 3
   lookSphereCastRadius: 5
-  attackRange: 1
+  enGuardeRange: 2.5
+  InRange: 0
+  attackRange: 2.5
   attackRate: 1
   attackForce: 15
   attackDamage: 10

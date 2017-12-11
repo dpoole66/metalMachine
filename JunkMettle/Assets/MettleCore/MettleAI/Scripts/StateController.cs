@@ -18,24 +18,24 @@ public class StateController : MonoBehaviour {
 
 
 	public State currentState;
-	public Stats Stats;
+    public State remainState;
+    public Stats Stats;
 	public Transform ThisCam;
-	public State remainState;
-	public GameObject  Enemy;
+	public Transform  Enemy;
 	public Transform GoTarget;
 
 	// Character Controller
 	Rigidbody m_Rigidbody;
-	bool m_IsGrounded;
-	float m_OrigGroundCheckDistance;
+	bool Grounded;
+    bool Crouching;
+    float m_OrigGroundCheckDistance;
 	const float k_Half = 0.5f;
-	float m_TurnAmount;
-	float m_ForwardAmount;
+	float Turn;
+	float Forward;
 	Vector3 m_GroundNormal;
 	float m_CapsuleHeight;
 	Vector3 m_CapsuleCenter;
 	CapsuleCollider m_Capsule;
-	bool m_Crouching;
 
 	// OLD Movement for Animator
 	//[HideInInspector] public float m_Forward;
@@ -45,13 +45,15 @@ public class StateController : MonoBehaviour {
 
 	int ForwardHash = Animator.StringToHash("Forward");
 	int TurnHash = Animator.StringToHash("Turn");
-	int GroundHash = Animator.StringToHash("Ground");
-	int CrouchHash = Animator.StringToHash("Crouch");
+	int GroundHash = Animator.StringToHash("Grounded");
+	int CrouchHash = Animator.StringToHash("Crouching");
+    int RotationHash = Animator.StringToHash("Rotation");
 
-	void Awake () {
+    void Awake () {
 
 		ThisAgent = GetComponent<NavMeshAgent> ();
 		ThisAnimator = GetComponent<Animator> ();
+        Enemy = GetComponent<Transform>();
 
 		// Character Controller
 		m_Rigidbody = GetComponent<Rigidbody>();
@@ -68,13 +70,13 @@ public class StateController : MonoBehaviour {
 
 		currentState.UpdateState (this);
 		// Old Animation control
-		/*
 		float Forward = ThisAgent.velocity.z * Stats.moveSpeed;
 		float Turn = ThisAgent.velocity.x  * Stats.turnSpeed;
 		ThisAnimator.SetFloat (ForwardHash, Forward );
 		ThisAnimator.SetFloat (TurnHash, Turn);
-*/
-}
+
+        ThisAgent.transform.LookAt(Enemy.transform.position);
+    }
 
 	void OnDrawGizmos(){
 
@@ -108,13 +110,13 @@ public class StateController : MonoBehaviour {
 		move = transform.InverseTransformDirection(move);
 		CheckGroundStatus();
 		move = Vector3.ProjectOnPlane(move, m_GroundNormal);
-		m_TurnAmount = Mathf.Atan2(move.x, move.z);
-		m_ForwardAmount = move.z;
+        Turn = Mathf.Atan2(move.x, move.z);
+        Forward = move.z;
 
 		ApplyExtraTurnRotation();
 
 		// control and velocity handling is different when grounded and airborne:
-		if (m_IsGrounded)
+		if (Grounded)
 		{
 			HandleGroundedMovement(crouch, jump);
 		}
@@ -132,12 +134,12 @@ public class StateController : MonoBehaviour {
 
 	void ScaleCapsuleForCrouching(bool crouch)
 	{
-		if (m_IsGrounded && crouch)
+		if (Grounded && crouch)
 		{
-			if (m_Crouching) return;
+			if (Crouching) return;
 			m_Capsule.height = m_Capsule.height / 2f;
 			m_Capsule.center = m_Capsule.center / 2f;
-			m_Crouching = true;
+            Crouching = true;
 		}
 		else
 		{
@@ -145,25 +147,25 @@ public class StateController : MonoBehaviour {
 			float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
 			if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
 			{
-				m_Crouching = true;
+                Crouching = true;
 				return;
 			}
 			m_Capsule.height = m_CapsuleHeight;
 			m_Capsule.center = m_CapsuleCenter;
-			m_Crouching = false;
+            Crouching = false;
 		}
 	}
 
 	void PreventStandingInLowHeadroom()
 	{
 		// prevent standing up in crouch-only zones
-		if (!m_Crouching)
+		if (!Crouching)
 		{
 			Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
 			float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
 			if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
 			{
-				m_Crouching = true;
+                Crouching = true;
 			}
 		}
 	}
@@ -172,11 +174,12 @@ public class StateController : MonoBehaviour {
 	void UpdateAnimator(Vector3 move)
 	{
 		// update the animator parameters
-		ThisAnimator.SetFloat(ForwardHash, m_ForwardAmount, 0.1f, Time.deltaTime);
-		ThisAnimator.SetFloat(TurnHash, m_TurnAmount, 0.1f, Time.deltaTime);
-		ThisAnimator.SetBool(CrouchHash, m_Crouching);
-		ThisAnimator.SetBool(GroundHash, m_IsGrounded);
-		if (!m_IsGrounded)
+		ThisAnimator.SetFloat(ForwardHash, Forward, 0.1f, Time.deltaTime);
+		ThisAnimator.SetFloat(TurnHash, Turn, 0.1f, Time.deltaTime);
+		ThisAnimator.SetBool(CrouchHash, Crouching);
+		ThisAnimator.SetBool(GroundHash, Grounded);
+        ThisAnimator.SetFloat(RotationHash, ThisAgent.transform.rotation.y);
+        if (!Grounded)
 		{
 			ThisAnimator.SetFloat("Jump", m_Rigidbody.velocity.y);
 		}
@@ -187,15 +190,15 @@ public class StateController : MonoBehaviour {
 		float runCycle =
 			Mathf.Repeat(
 				ThisAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime + m_RunCycleLegOffset, 1);
-		float jumpLeg = (runCycle < k_Half ? 1 : -1) * m_ForwardAmount;
-		if (m_IsGrounded)
+		float jumpLeg = (runCycle < k_Half ? 1 : -1) * Forward;
+		if (Grounded)
 		{
 			ThisAnimator.SetFloat("JumpLeg", jumpLeg);
 		}
 
 		// the anim speed multiplier allows the overall speed of walking/running to be tweaked in the inspector,
 		// which affects the movement speed because of the root motion.
-		if (m_IsGrounded && move.magnitude > 0)
+		if (Grounded && move.magnitude > 0)
 		{
 			ThisAnimator.speed = m_AnimSpeedMultiplier;
 		}
@@ -224,7 +227,7 @@ public class StateController : MonoBehaviour {
 		{
 			// jump!
 			m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
-			m_IsGrounded = false;
+            Grounded = false;
 			ThisAnimator.applyRootMotion = false;
 			m_GroundCheckDistance = 0.1f;
 		}
@@ -233,8 +236,8 @@ public class StateController : MonoBehaviour {
 	void ApplyExtraTurnRotation()
 	{
 		// help the character turn faster (this is in addition to root rotation in the animation)
-		float turnSpeed = Mathf.Lerp(m_StationaryTurnSpeed, m_MovingTurnSpeed, m_ForwardAmount);
-		transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
+		float turnSpeed = Mathf.Lerp(m_StationaryTurnSpeed, m_MovingTurnSpeed, Forward);
+		transform.Rotate(0, Turn * turnSpeed * Time.deltaTime, 0);
 	}
 
 
@@ -242,7 +245,7 @@ public class StateController : MonoBehaviour {
 	{
 		// we implement this function to override the default root motion.
 		// this allows us to modify the positional speed before it's applied.
-		if (m_IsGrounded && Time.deltaTime > 0)
+		if (Grounded && Time.deltaTime > 0)
 		{
 			Vector3 v = (ThisAnimator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
 
@@ -264,12 +267,12 @@ public class StateController : MonoBehaviour {
 		if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, m_GroundCheckDistance))
 		{
 			m_GroundNormal = hitInfo.normal;
-			m_IsGrounded = true;
+            Grounded = true;
 			ThisAnimator.applyRootMotion = true;
 		}
 		else
 		{
-			m_IsGrounded = false;
+            Grounded = false;
 			m_GroundNormal = Vector3.up;
 			ThisAnimator.applyRootMotion = false;
 		}
