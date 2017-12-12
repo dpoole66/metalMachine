@@ -14,7 +14,7 @@ public class ManeuverDecision : Decision {
 
 	private bool  InManeuvers (StateController controller) {
 		
-		if (controller.GoTarget != null && controller.ThisAgent.remainingDistance > controller.ThisAgent.stoppingDistance) {
+		if (controller.ThisAgent.remainingDistance > controller.ThisAgent.stoppingDistance) {
 
 			controller.ThisAnimator.SetBool ("P_Maneuver", true);
 			controller.ThisAnimator.SetBool ("P_EnGuarde", false);

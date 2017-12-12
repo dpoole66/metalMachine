@@ -19,7 +19,7 @@ public class EnGuardeAction : Action {
         //if(controller.ThisAgent.remainingDistance <= controller.ThisAgent.stoppingDistance && !controller.ThisAgent.pathPending ){
 
         //Vector3 relativePos = controller.Enemy.transform.position - controller.ThisAgent.transform.position;
-        controller.ThisAgent.SetDestination(controller.GoTarget.position);
+		controller.ThisAgent.SetDestination(controller.ThisAgent.destination);
            // controller.ThisAgent.transform.rotation = Quaternion.Slerp(controller.ThisAgent.transform.rotation, rotation,
            // Time.deltaTime * controller.Stats.turnSpeed);
 

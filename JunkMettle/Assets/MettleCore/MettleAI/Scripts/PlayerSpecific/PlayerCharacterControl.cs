@@ -28,11 +28,12 @@ public class PlayerCharacterControl : MonoBehaviour{
 	{
 			if (Target != null)
 				agent.SetDestination(Target.position);
-
+		/*
 		if (agent.remainingDistance > agent.stoppingDistance)
 			character.Move(agent.desiredVelocity, false, false);
 		else
 			character.Move(Vector3.zero, false, false);
+			*/
 	}
 
 

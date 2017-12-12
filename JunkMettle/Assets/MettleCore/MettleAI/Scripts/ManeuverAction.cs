@@ -14,7 +14,7 @@ public class ManeuverAction : Action {
 
 	private void Maneuver(StateController controller){
 		
-		controller.ThisAgent.SetDestination (controller.GoTarget.position);
+		controller.ThisAgent.SetDestination (controller.ThisAgent.destination);
 
 	}
 }
