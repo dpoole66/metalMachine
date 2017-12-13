@@ -58,6 +58,10 @@
      <Compile Include="Assets\MettleCore\Controller\Player\Obsolete\CorePlayerMover.cs" />
      <Compile Include="Assets\MettleCore\Controller\Player\Obsolete\PlayerCoreController.cs" />
      <Compile Include="Assets\MettleCore\Controller\Player\Obsolete\PlayerMettleController.cs" />
+     <Compile Include="Assets\MettleCore\Controller\Player\PlayerController.cs" />
+     <Compile Include="Assets\MettleCore\Controller\Player\StateMachine\EnGuarde.cs" />
+     <Compile Include="Assets\MettleCore\Controller\Player\StateMachine\PlayerAI.cs" />
+     <Compile Include="Assets\MettleCore\Controller\Player\StateMachine\PlayerBaseFSM.cs" />
      <Compile Include="Assets\MettleCore\GeneralAI\ClickToMove.cs" />
      <Compile Include="Assets\MettleCore\GeneralAI\LookAtTarget.cs" />
      <Compile Include="Assets\MettleCore\GeneralAI\MettleAware.cs" />

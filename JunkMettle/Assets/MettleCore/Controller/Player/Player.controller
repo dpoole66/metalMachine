@@ -32,13 +32,13 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Turn
+  - m_Name: Horizontal
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Forward
+  - m_Name: Vertical
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -178,8 +178,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Turn
     m_Mirror: 0
-  m_BlendParameter: Turn
-  m_BlendParameterY: Forward
+  m_BlendParameter: Horizontal
+  m_BlendParameterY: Vertical
   m_MinThreshold: 0.375
   m_MaxThreshold: 0.7916667
   m_UseAutomaticThresholds: 1
@@ -560,7 +560,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102165294967877700}
-    m_Position: {x: 144, y: 288, z: 0}
+    m_Position: {x: -96, y: 72, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102215611024856012}
     m_Position: {x: -192, y: -36, z: 0}
@@ -569,10 +569,10 @@ AnimatorStateMachine:
     m_Position: {x: -84, y: -108, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102532406185401246}
-    m_Position: {x: -456, y: -24, z: 0}
+    m_Position: {x: -396, y: -144, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102507540208579016}
-    m_Position: {x: -372, y: 228, z: 0}
+    m_Position: {x: -360, y: 36, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102088315704245876}
     m_Position: {x: -432, y: -36, z: 0}

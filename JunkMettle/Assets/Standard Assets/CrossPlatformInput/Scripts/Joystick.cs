@@ -1,9 +1,11 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+using UnityStandardAssets.CrossPlatformInput;
+/*
 namespace UnityStandardAssets.CrossPlatformInput
 {
+	*/
 	public class Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 	{
 		public enum AxisOption
@@ -115,4 +117,6 @@ namespace UnityStandardAssets.CrossPlatformInput
 			}
 		}
 	}
+/*
 }
+*/
