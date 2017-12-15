@@ -1,13 +1,15 @@
 using System;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.AI;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
-    [RequireComponent(typeof (UnityEngine.AI.NavMeshAgent))]
+
     [RequireComponent(typeof (ThirdPersonCharacter))]
     public class AICharacterControl : MonoBehaviour
     {
-        public UnityEngine.AI.NavMeshAgent agent { get; private set; }             // the navmesh agent required for the path finding
+        public NavMeshAgent agent { get; private set; }             // the navmesh agent required for the path finding
         public ThirdPersonCharacter character { get; private set; } // the character we are controlling
         public Transform target;                                    // target to aim for
 
@@ -15,22 +17,24 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private void Start()
         {
             // get the components on the object we need ( should not be null due to require component so no need to check )
-            agent = GetComponentInChildren<UnityEngine.AI.NavMeshAgent>();
+            agent = GetComponentInChildren<NavMeshAgent>();
             character = GetComponent<ThirdPersonCharacter>();
 
-	        agent.updateRotation = false;
+	        agent.updateRotation = true;
 	        agent.updatePosition = true;
         }
 
 
         private void Update()
         {
-            if (target != null)
+			if (target != null )
                 agent.SetDestination(target.position);
+				var direction = target.transform.position - agent.transform.position;
+				agent.transform.rotation = Quaternion.Slerp (agent.transform.rotation, Quaternion.LookRotation (direction), 3.0f * Time.deltaTime);
 
-            if (agent.remainingDistance > agent.stoppingDistance)
-                character.Move(agent.desiredVelocity, false, false);
-            else
+			if (agent.remainingDistance > agent.stoppingDistance) {
+				character.Move (agent.desiredVelocity, false, false);
+			}else
                 character.Move(Vector3.zero, false, false);
         }
 

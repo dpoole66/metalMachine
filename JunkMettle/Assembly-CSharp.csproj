@@ -51,13 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\MettleCore\Controller\Enemy\CoreEnemyMover.cs" />
-     <Compile Include="Assets\MettleCore\Controller\Enemy\EnemyCoreController.cs" />
-     <Compile Include="Assets\MettleCore\Controller\Player\Obsolete\BareMettle.cs" />
-     <Compile Include="Assets\MettleCore\Controller\Player\Obsolete\CoreMettleMover.cs" />
-     <Compile Include="Assets\MettleCore\Controller\Player\Obsolete\CorePlayerMover.cs" />
-     <Compile Include="Assets\MettleCore\Controller\Player\Obsolete\PlayerCoreController.cs" />
-     <Compile Include="Assets\MettleCore\Controller\Player\Obsolete\PlayerMettleController.cs" />
+     <Compile Include="Assets\MettleCore\Controller\Enemy\BU\CoreEnemyMover.cs" />
+     <Compile Include="Assets\MettleCore\Controller\Enemy\BU\EnemyCoreController.cs" />
+     <Compile Include="Assets\MettleCore\Controller\Enemy\ThirdPersonEnemyControl.cs" />
      <Compile Include="Assets\MettleCore\Controller\Player\PlayerController.cs" />
      <Compile Include="Assets\MettleCore\Controller\Player\StateMachine\EnGuarde.cs" />
      <Compile Include="Assets\MettleCore\Controller\Player\StateMachine\PlayerAI.cs" />

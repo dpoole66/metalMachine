@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Joystick.unity
+- path: Assets/Scenes/PlayerEnemySetup.unity
   isLoaded: 1
   isActive: 1
