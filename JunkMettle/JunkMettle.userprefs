@@ -1,13 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MettleCore\Controller\Player\PlayerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MettleCore\Controller\Player\Actions\Attack.cs">
     <Files>
-      <File FileName="Assets\MettleCore\Controller\Player\StateMachine\PlayerBaseFSM.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonUserControl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\CrossPlatformInput\Scripts\Joystick.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonCharacter.cs" Line="1" Column="1" />
-      <File FileName="Assets\MettleCore\Controller\Player\PlayerController.cs" Line="44" Column="1" NotebookId="1" />
-      <File FileName="Assets\MettleCore\Controller\Player\Obsolete\PlayerCoreController.cs" Line="20" Column="2" NotebookId="1" />
+      <File FileName="Assets\UI\Menu.cs" Line="14" Column="1" />
+      <File FileName="Assets\MettleCore\Controller\Player\Actions\Attack.cs" Line="27" Column="1" />
+      <File FileName="Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\AICharacterControl.cs" Line="41" Column="3" NotebookId="1" />
+      <File FileName="Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonUserControl.cs" Line="9" Column="3" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
