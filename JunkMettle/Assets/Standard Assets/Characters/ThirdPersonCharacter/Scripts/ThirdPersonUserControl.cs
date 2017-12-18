@@ -14,12 +14,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
       //  private Vector3 m_CamForward;             // The current forward direction of the camera
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
-		public NavMeshAgent playerAgent;
-		public Transform enemyTarget;
+		private NavMeshAgent playerAgent;
+		private GameObject enemyTarget;
         
         private void Start()	{
 
-			/*
+            /*
             // get the transform of the main camera
             if (Camera.main != null)
             {
@@ -32,6 +32,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 // we use self-relative controls in this case, which probably isn't what the user wants, but hey, we warned them!
             }
 			*/
+            // Get the Enemy by her tag
+            enemyTarget = GameObject.FindGameObjectWithTag("Enemy");
 
             // get the third person character ( this should never be null due to require component )
 			playerCharacter = GetComponent<ThirdPersonCharacter>();
@@ -106,7 +108,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             m_Jump = false;
         }
 
-		public void SetTarget(Transform target)
+		public void SetTarget(GameObject target)
 		{
 			this.enemyTarget = target;
 		}

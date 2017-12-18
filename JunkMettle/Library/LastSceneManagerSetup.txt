@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/PlayerEnemySetup.unity
+- path: Assets/Scenes/ARCMettleOne_02.unity
   isLoaded: 1
   isActive: 1

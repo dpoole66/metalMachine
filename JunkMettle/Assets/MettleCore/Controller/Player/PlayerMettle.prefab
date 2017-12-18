@@ -737,6 +737,7 @@ GameObject:
   - component: {fileID: 136128925851411350}
   - component: {fileID: 114305006847474186}
   - component: {fileID: 114654527624722722}
+  - component: {fileID: 114007560761965418}
   m_Layer: 0
   m_Name: PlayerMettle
   m_TagString: Player
@@ -1591,7 +1592,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1631706555081684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.92, y: 0, z: 2.69}
+  m_LocalPosition: {x: 0.42, y: 0, z: 5.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4275328718736274}
@@ -2259,6 +2260,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -2338,6 +2340,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114007560761965418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1631706555081684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 888fb26344cc25e449a09f9c67d24df7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114305006847474186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2349,6 +2362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521b611700410be45810047f0a74e899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAgent: {fileID: 195282581577905540}
+  enemyTarget: {fileID: 0}
 --- !u!114 &114654527624722722
 MonoBehaviour:
   m_ObjectHideFlags: 1

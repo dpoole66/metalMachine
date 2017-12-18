@@ -5,9 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: c125db2851c6fc2499e9a718b552a7e1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PlayerEnemySetup.unity
     guid: eec804eb83aef4344aae6e7be0067c4f
+  - enabled: 0
+    path: Assets/GoogleARCore/Examples/ComputerVision/Scenes/ComputerVision.unity
+    guid: 5ef0f7f7f2c7b4285b707265348bbffd
+  - enabled: 0
+    path: Assets/Scenes/ARCMettleOne.unity
+    guid: 6e183a1cf942f7b4d9bf47ba11a3a177
+  - enabled: 1
+    path: Assets/Scenes/ARCMettleOne_02.unity
+    guid: 69ec3316a6d96a94f91f02bd8f58295c
