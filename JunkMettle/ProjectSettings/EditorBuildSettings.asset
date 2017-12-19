@@ -17,6 +17,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/ARCMettleOne.unity
     guid: 6e183a1cf942f7b4d9bf47ba11a3a177
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ARCMettleOne_02.unity
     guid: 69ec3316a6d96a94f91f02bd8f58295c
+  - enabled: 1
+    path: Assets/Scenes/GameStates/Start.unity
+    guid: 2dfc632c1dedbdb46a8095eed7a76d08
+  - enabled: 1
+    path: Assets/Scenes/GameStates/Game.unity
+    guid: b63c96f88d8ba2b4e98e33175c856d6d
+  - enabled: 1
+    path: Assets/Scenes/GameStates/Win.unity
+    guid: a33783f1dcf4e9c4598da57cf325d96f
+  - enabled: 1
+    path: Assets/Scenes/GameStates/Loose.unity
+    guid: cd1f31dafd0ce74408695f48ebf4a4d2

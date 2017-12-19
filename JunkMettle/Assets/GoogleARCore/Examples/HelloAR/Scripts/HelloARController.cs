@@ -82,6 +82,9 @@ namespace GoogleARCore.HelloAR
 
             _QuitOnConnectionErrors();
 
+            //####
+            // This should  active while in GAME_STATE.PLACE         Like if(currentState == GAME_STATE.Place && Frame.TrackingState != TrackingState.Tracking)
+            //####
             // Check that motion tracking is tracking.
             if (Frame.TrackingState != TrackingState.Tracking)
             {
@@ -118,37 +121,45 @@ namespace GoogleARCore.HelloAR
 
             SearchingForPlaneUI.SetActive(showSearchingUI);
 
-            // If the player has not touched the screen, we are done with this update.
-            Touch touch;
-            if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
-            {
-                return;
+           // If the player has not touched the screen, we are done with this update.
+           Touch touch;
+           if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
+           {
+               return;
+           }
+
+           // Raycast against the location the player touched to search for planes.
+           TrackableHit hit;
+           TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinBounds | TrackableHitFlags.PlaneWithinPolygon;
+
+           if (Session.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
+           {
+               var mettleObject = Instantiate(MettlePrefab, hit.Pose.position, hit.Pose.rotation);
+
+               // Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
+               // world evolves.
+               var anchor = hit.Trackable.CreateAnchor(hit.Pose);
+
+               // Andy should look at the camera but still be flush with the plane.
+               mettleObject.transform.LookAt(FirstPersonCamera.transform);
+               mettleObject.transform.rotation = Quaternion.Euler(0.0f,
+               mettleObject.transform.rotation.eulerAngles.y, mettleObject.transform.rotation.z);
+
+               // Make Andy model a child of the anchor.
+               mettleObject.transform.parent = anchor.transform;
+
+               var mettlePlayer = Instantiate(MettlePlayer, MettlePrefab.transform.position, MettlePrefab.transform.rotation);
+               /*
+                if(MettlePlayer != null){ 
+                    CurentState= GAME_STATE.GAME;
+               }  
+               */
+
             }
-
-            // Raycast against the location the player touched to search for planes.
-            TrackableHit hit;
-            TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinBounds | TrackableHitFlags.PlaneWithinPolygon;
-
-            if (Session.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
-            {
-                var mettleObject = Instantiate(MettlePrefab, hit.Pose.position, hit.Pose.rotation);
-
-                // Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
-                // world evolves.
-                var anchor = hit.Trackable.CreateAnchor(hit.Pose);
-
-                // Andy should look at the camera but still be flush with the plane.
-                mettleObject.transform.LookAt(FirstPersonCamera.transform);
-                mettleObject.transform.rotation = Quaternion.Euler(0.0f,
-                    mettleObject.transform.rotation.eulerAngles.y, mettleObject.transform.rotation.z);
-
-                // Make Andy model a child of the anchor.
-                mettleObject.transform.parent = anchor.transform;
-
-                var mettlePlayer = Instantiate(MettlePlayer, MettlePrefab.transform.position, MettlePrefab.transform.rotation);
-            }
+            //####
+            //#### 
         }
-
+   
         /// <summary>
         /// Quit the application if there was a connection error for the ARCore session.
         /// </summary>
